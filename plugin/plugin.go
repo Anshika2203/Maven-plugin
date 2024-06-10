@@ -108,6 +108,14 @@ func initMavenSettings(p *Plugin) error {
 		}
 	}
 
+	mavenConfig := os.Getenv("MAVEN_CONFIG")
+	if mavenConfig == "" {
+		// TODO enable it when running as non-root user
+		// mavenConfig = "/home/dev/.m2"
+		mavenConfig = "/root/.m2"
+	}
+	os.Setenv("MAVEN_CONFIG", mavenConfig)
+
 	return nil
 }
 
