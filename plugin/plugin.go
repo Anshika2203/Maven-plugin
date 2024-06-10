@@ -41,7 +41,12 @@ func (p *Plugin) Exec(ctx context.Context) error {
 
 func initMavenSettings(p *Plugin) error {
 	MAVEN_CONFIG := os.Getenv("MAVEN_CONFIG")
-
+	if MAVEN_CONFIG == "" {
+		// TODO enable it when running as non-root user
+		// mavenConfig = "/home/dev/.m2"
+		MAVEN_CONFIG = "/root/.m2"
+	}
+	os.Setenv("MAVEN_CONFIG", MAVEN_CONFIG)
 	if _, err := os.Stat(MAVEN_CONFIG + "/settings.xml"); os.IsNotExist(err) {
 		f, err := os.Create(MAVEN_CONFIG + "/settings.xml")
 		if err != nil {
@@ -107,14 +112,6 @@ func initMavenSettings(p *Plugin) error {
 			return err
 		}
 	}
-
-	mavenConfig := os.Getenv("MAVEN_CONFIG")
-	if mavenConfig == "" {
-		// TODO enable it when running as non-root user
-		// mavenConfig = "/home/dev/.m2"
-		mavenConfig = "/root/.m2"
-	}
-	os.Setenv("MAVEN_CONFIG", mavenConfig)
 
 	return nil
 }
