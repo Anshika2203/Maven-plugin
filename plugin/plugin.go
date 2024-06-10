@@ -46,7 +46,6 @@ func initMavenSettings(p *Plugin) error {
 		// mavenConfig = "/home/dev/.m2"
 		MAVEN_CONFIG = "/root/.m2"
 	}
-	os.Setenv("MAVEN_CONFIG", MAVEN_CONFIG)
 	if _, err := os.Stat(MAVEN_CONFIG + "/settings.xml"); os.IsNotExist(err) {
 		f, err := os.Create(MAVEN_CONFIG + "/settings.xml")
 		if err != nil {
