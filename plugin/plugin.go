@@ -42,12 +42,22 @@ func (p *Plugin) Exec(ctx context.Context) error {
 func initMavenSettings(p *Plugin) error {
 	MAVEN_CONFIG := os.Getenv("MAVEN_CONFIG")
 	if MAVEN_CONFIG == "" {
-		// TODO enable it when running as non-root user
-		// mavenConfig = "/home/dev/.m2"
-		MAVEN_CONFIG = "/root/.m2"
+		// Use the home directory of the current user
+		homeDir, err := os.UserHomeDir()
+		if err != nil {
+			return fmt.Errorf("failed to get home directory: %w", err)
+		}
+		MAVEN_CONFIG = fmt.Sprintf("%s/.m2", homeDir)
 	}
-	if _, err := os.Stat(MAVEN_CONFIG + "/settings.xml"); os.IsNotExist(err) {
-		f, err := os.Create(MAVEN_CONFIG + "/settings.xml")
+
+	settingsPath := MAVEN_CONFIG + "/settings.xml"
+
+	if err := os.MkdirAll(MAVEN_CONFIG, 0755); err != nil {
+		return fmt.Errorf("failed to create maven config directory: %w", err)
+	}
+
+	if _, err := os.Stat(settingsPath); os.IsNotExist(err) {
+		f, err := os.Create(settingsPath)
 		if err != nil {
 			return err
 		}
