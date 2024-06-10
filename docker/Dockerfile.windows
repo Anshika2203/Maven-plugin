@@ -1,0 +1,5 @@
+FROM docker.io/maven:3.8.5-openjdk-11-slim
+
+COPY release/windows/amd64/maven-plugin.exe C:/maven-plugin.exe
+
+ENTRYPOINT ["C:\\maven-plugin.exe"]
