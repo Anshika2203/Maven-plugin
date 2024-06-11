@@ -22,7 +22,7 @@ The plugin `anshikaanand/maven-plugin` is available for the following architectu
     identifier: maven-plugin-arm64
     spec:
         connectorRef: harness-docker-connector
-        image: anshikaanand/maven-plugin:
+        image: anshikaanand/maven-plugin:linux-arm64
        
 
 - step:
@@ -31,5 +31,5 @@ The plugin `anshikaanand/maven-plugin` is available for the following architectu
     identifier: maven-plugin-amd64
     spec:
         connectorRef: harness-docker-connector
-        image: anshikaanand/maven-plugin
+        image: anshikaanand/maven-plugin:linux-amd64
         
