@@ -42,11 +42,7 @@ func (p *Plugin) Exec(ctx context.Context) error {
 func initMavenSettings(p *Plugin) error {
 	MAVEN_CONFIG := os.Getenv("MAVEN_CONFIG")
 	if MAVEN_CONFIG == "" {
-		// Use the home directory of the current user
-		homeDir, err := os.UserHomeDir()
-		if err != nil {
-			return fmt.Errorf("failed to get home directory: %w", err)
-		}
+		homeDir := os.Getenv("DRONE_WORKSPACE")
 		MAVEN_CONFIG = fmt.Sprintf("%s/.m2", homeDir)
 	}
 
