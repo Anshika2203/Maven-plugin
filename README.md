@@ -1,6 +1,16 @@
 # Maven-plugin
 
-A [Drone](https://drone.io) plugin to build Java applications using [Apache Maven](https://maven.apache.org).
+- [Synopsis](#Synopsis)
+- [Plugin Image](#Plugin-Image)
+- [Parameters](#Parameters)
+- [Building](#building)
+- [Examples](#Examples)
+
+
+## Synopsis
+
+This plugin is used to build Java application using [Apache Maven](https://maven.apache.org). 
+
 
 ## Plugin Image
 
@@ -30,6 +40,14 @@ The plugin `anshikaanand/maven-plugin` is available for the following architectu
 | proxy_non_proxy_hosts <span style="font-size: 10px"><br/>`optional`</span>       | An array of non proxy server hosts.                                                                                                       |
 | proxy_protocol <span style="font-size: 10px"><br/>`optional`</span>              | Protocol for the proxy ie http or https.                                                                                                  |
 
+
+## Building
+
+Build the plugin image:
+
+```text
+./scripts/build.sh
+```
 
 ## Examples
 
