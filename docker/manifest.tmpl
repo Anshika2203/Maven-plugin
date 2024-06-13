@@ -1,4 +1,4 @@
-image: anshikaanand/maven-plugin:{{#if build.tag}}{{trimPrefix "v" build.tag}}{{else}}latest{{/if}}
+image: harnesscommunitytest/maven-plugin:{{#if build.tag}}{{trimPrefix "v" build.tag}}{{else}}latest{{/if}}
 {{#if build.tags}}
 tags:
 {{#each build.tags}}
@@ -7,12 +7,12 @@ tags:
 {{/if}}
 manifests:
   -
-    image: anshikaanand/maven-plugin:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}linux-amd64
+    image: harnesscommunitytest/maven-plugin:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}linux-amd64
     platform:
       architecture: amd64
       os: linux
   -
-    image: anshikaanand/maven-plugin:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}linux-arm64
+    image: harnesscommunitytest/maven-plugin:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}linux-arm64
     platform:
       variant: v8
       architecture: arm64
