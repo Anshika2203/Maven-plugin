@@ -25,37 +25,15 @@ type Plugin struct {
 	MavenModules   string `envconfig:"PLUGIN_MAVEN_MODULES"`
 	ContextDir     string `envconfig:"PLUGIN_CONTEXT_DIR"`
 	LogLevel       string `envconfig:"PLUGIN_LOG_LEVEL"`
-	GitURL         string `envconfig:"PLUGIN_GITURL"`
 }
 
 func (p *Plugin) Exec(ctx context.Context) error {
-	if p.GitURL != "" {
-		if err := cloneRepo(p.GitURL); err != nil {
-			return err
-		}
-	}
-
 	if err := initMavenSettings(p); err != nil {
 		return err
 	}
 
 	if err := runMavenCommand(p); err != nil {
 		return err
-	}
-
-	return nil
-}
-
-func cloneRepo(gitURL string) error {
-	cmd := exec.Command("git", "clone", gitURL)
-	cmd.Dir = "/harness"
-	cmd.Stdout = os.Stdout
-	cmd.Stderr = os.Stderr
-
-	fmt.Printf("Cloning repository: %s\n", gitURL)
-
-	if err := cmd.Run(); err != nil {
-		return fmt.Errorf("failed to clone repository: %w", err)
 	}
 
 	return nil
