@@ -1,5 +1,7 @@
 FROM docker.io/maven:3.8.5-openjdk-11-slim
 
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
+
 COPY release/linux/amd64/maven-plugin /bin/
 
 ENTRYPOINT ["/bin/maven-plugin"]
