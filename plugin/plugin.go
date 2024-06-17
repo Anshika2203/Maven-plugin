@@ -48,6 +48,7 @@ func (p *Plugin) Exec(ctx context.Context) error {
 
 func cloneRepo(gitURL string) error {
 	cmd := exec.Command("git", "clone", gitURL)
+	cmd.Dir = "/harness"
 	cmd.Stdout = os.Stdout
 	cmd.Stderr = os.Stderr
 
