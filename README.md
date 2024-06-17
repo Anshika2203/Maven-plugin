@@ -14,13 +14,14 @@ This plugin is used to build Java application using [Apache Maven](https://maven
 
 ## Plugin Image
 
-The plugin `anshikaanand/maven-plugin` is available for the following architectures:
+The plugin `harnesscommunitytest/maven-plugin` is available for the following architectures:
 
-| OS            | Tag                                |
-| ------------- | ---------------------------------- |
-| linux/amd64   | `linux-amd64`                      |
-| linux/arm64   | `linux-arm64`                      |
-| windows/amd64 | `windows-amd64`                    |
+| OS            | Tag                 |
+|---------------|---------------------|
+| latest        | `linux-amd64/arm64` |
+| linux/amd64   | `linux-amd64`       |
+| linux/arm64   | `linux-arm64`       |
+| windows/amd64 | `windows-amd64`     |
 
 
 ## Parameters
@@ -59,7 +60,7 @@ Build the plugin image:
     identifier: maven-plugin-arm64
     spec:
         connectorRef: harness-docker-connector
-        image: anshikaanand/maven-plugin:linux-arm64
+        image: harnesscommunitytest/maven-plugin:linux-arm64
        
 
 - step:
@@ -68,5 +69,5 @@ Build the plugin image:
     identifier: maven-plugin-amd64
     spec:
         connectorRef: harness-docker-connector
-        image: anshikaanand/maven-plugin:linux-amd64
+        image: harnesscommunitytest/maven-plugin:linux-amd64
         
