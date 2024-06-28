@@ -19,7 +19,7 @@ manifests:
       os: linux
   -
     image: harnesscommunitytest/maven-plugin:{{#if build.tag}}{{trimPrefix "v" build.tag}}-{{/if}}windows-amd64
-        platform:
-          architecture: amd64
-          os: windows
-          version: ltsc2022
+    platform:
+      architecture: amd64
+      os: windows
+      version: ltsc2022
