@@ -12,6 +12,8 @@ RUN choco install maven -y
 
 RUN choco install openjdk -y
 
+RUN choco install docker-cli -y
+
 COPY release/windows/amd64/maven-plugin.exe C:/maven-plugin.exe
 
 ENTRYPOINT ["C:\\maven-plugin.exe"]
